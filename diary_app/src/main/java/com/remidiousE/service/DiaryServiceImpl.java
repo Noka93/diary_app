@@ -25,8 +25,14 @@ public class DiaryServiceImpl implements DiaryService{
         return Mapper.map(savedDiary);
 
     }
+
     @Override
-    public List<Diary> getAllEntries() {
+    public Diary getDiaryById(Long id) {
+        return null;
+    }
+
+    @Override
+    public List<Diary> getAllDiaries() {
         return diaryRepository.findAll();
     }
 

@@ -1,12 +1,12 @@
 package com.remidiousE.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 public class Diary {
@@ -15,4 +15,12 @@ public class Diary {
     private Long diaryId;
 
     private LocalDate date;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Entry> entries = new ArrayList<>();
+
+
+    public void setEntry(Entry entry) {
+        entries.add(entry);
+    }
 }

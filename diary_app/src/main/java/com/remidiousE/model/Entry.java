@@ -1,5 +1,6 @@
 package com.remidiousE.model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -8,6 +9,7 @@ import lombok.Data;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 @Data
+@Entity
 public class Entry {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

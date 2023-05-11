@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class EntryController {
@@ -20,11 +21,20 @@ public class EntryController {
         return new ResponseEntity<>(entryService.saveEntry(request), HttpStatus.CREATED);
     }
 
+    @GetMapping("/entry/{id}")
+    public Optional<Entry> getEntryById(@PathVariable("id") Long id){
+        return entryService.getEntryById(id);
+    }
+
     @GetMapping("/entries")
     public List<Entry> getAllEntries(){
         return entryService.getAllEntries();
     }
 
+    @PutMapping("/entry/{id}")
+    public  Entry updateEntryById(@PathVariable("id") Long entryId, Entry entry){
+        return entryService.updateEntryById(entryId, entry);
+    }
     @DeleteMapping("/entries/{id}")
     public String deleteEntryById(@PathVariable("id") Long id){
         entryService.deleteEntryById(id);

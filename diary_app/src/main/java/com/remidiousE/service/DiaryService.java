@@ -13,7 +13,9 @@ import java.util.List;
 public interface DiaryService {
     DiaryResponse saveDiary(DiaryRequest request);
 
-    List<Diary> getAllEntries();
+    Diary getDiaryById(Long id);
+
+    List<Diary> getAllDiaries();
 
     void deleteEntryById(Long id);
 

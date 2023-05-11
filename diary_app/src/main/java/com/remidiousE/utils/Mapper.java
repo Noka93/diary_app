@@ -11,16 +11,25 @@ public class Mapper {
 
     public static Diary map(DiaryRequest request){
         Diary diary = new Diary();
+        Entry entry = new Entry();
         diary.setDiaryId(request.getDiaryId());
         diary.setDate(request.getDate());
+        entry.setTitle(entry.getTitle());
+        entry.setDate(entry.getDate());
+        entry.setContent(entry.getContent());
+        diary.setEntry(entry);
         return diary;
     }
 
     public static DiaryResponse map(Diary savedDiary){
-        DiaryResponse response = new DiaryResponse();
-        response.setEntry(String.valueOf(savedDiary.getDate()));
-        response.setEntry(savedDiary.getEntry());
-        return response;
+        DiaryResponse diaryResponse = new DiaryResponse();
+        Entry entryResponse = new Entry();
+        diaryResponse.setDate(savedDiary.getDate());
+        entryResponse.setDate(entryResponse.getDate());
+        entryResponse.setTitle(entryResponse.getTitle());
+        entryResponse.setContent(entryResponse.getContent());
+        diaryResponse.setEntry(entryResponse);
+        return diaryResponse;
     }
     public static Entry map(EntryRequest request){
         Entry entry = new Entry();

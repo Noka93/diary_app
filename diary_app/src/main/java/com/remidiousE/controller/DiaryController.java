@@ -2,7 +2,6 @@ package com.remidiousE.controller;
 
 import com.remidiousE.dto.request.DiaryRequest;
 import com.remidiousE.model.Diary;
-import com.remidiousE.model.Entry;
 import com.remidiousE.service.DiaryService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +18,22 @@ public class DiaryController {
     private DiaryService diaryService;
 
 
-    @PostMapping("/entries")
-    public ResponseEntity<?> createEntry(@RequestBody DiaryRequest request){
+    @PostMapping("/diaries")
+    public ResponseEntity<?> createDiary(@RequestBody DiaryRequest request){
         return new ResponseEntity<>(diaryService.saveDiary(request), HttpStatus.CREATED);
     }
 
-    @GetMapping("/entries")
-    public List<Diary> getAllEntries(){
-        return diaryService.getAllEntries();
+    @GetMapping("/diary{id}")
+
+    public Diary getDiaryById(@PathVariable("id") Long id){
+        return diaryService.getDiaryById(id);
+
+
+    }
+
+    @GetMapping("/diaries")
+    public List<Diary> getAllDiaries(){
+        return diaryService.getAllDiaries();
     }
 
     @DeleteMapping("/entries/{id}")
